@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste MindAR</title>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.0/dist/mindar-image.prod.js"></script>
+</head>
+<body>
+    <h1>Aponte para a imagem</h1>
+    <mindar-image-viewer id="viewer" target-image="target.mind">
+        <video id="video" src="video.mp4" loop></video>
+    </mindar-image-viewer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const video = document.getElementById("video");
+            const viewer = document.getElementById("viewer");
+
+            viewer.addEventListener("targetFound", () => {
+                video.play();
+            });
+
+            viewer.addEventListener("targetLost", () => {
+                video.pause();
+            });
+        });
+    </script>
+</body>
+</html>
